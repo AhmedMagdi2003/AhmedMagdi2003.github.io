@@ -104,7 +104,8 @@
     .hero-links a { display: inline-flex; align-items: center; gap: .4rem; }
     .hero-visual { position: relative; display: grid; place-items: center; min-height: 390px; }
     .portrait-halo { position: absolute; width: min(82%, 360px); aspect-ratio: 1; border-radius: 50%; border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent); box-shadow: 0 0 0 18px color-mix(in srgb, var(--accent) 5%, transparent), 0 0 80px color-mix(in srgb, var(--accent) 14%, transparent); }
-    .portrait { position: relative; z-index: 1; width: min(72%, 318px); aspect-ratio: 1; object-fit: cover; border-radius: 50%; border: 8px solid var(--surface); box-shadow: var(--shadow); }
+    .portrait { position: relative; z-index: 1; width: min(72%, 318px); height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 50%; border: 8px solid var(--surface); box-shadow: var(--shadow); }
+    .portrait-stage, .portrait-labels { display: contents; }
     .orbit-chip { position: absolute; z-index: 2; display: flex; align-items: center; gap: .5rem; padding: .65rem .8rem; color: var(--text); background: var(--surface); border: 1px solid var(--line); border-radius: 14px; font-size: .76rem; font-weight: 760; box-shadow: var(--shadow); }
     .orbit-chip span { color: var(--accent); font-weight: 900; }
     .chip-one { top: 10%; right: 7%; }.chip-two { left: -2%; top: 40%; }.chip-three { right: 0; bottom: 15%; }.chip-four { left: 11%; bottom: 2%; }
@@ -190,6 +191,32 @@
     .reveal { opacity: 0; transform: translateY(16px); transition: opacity .55s ease, transform .55s ease; }
     .reveal.visible { opacity: 1; transform: none; }
     :focus-visible { outline: 3px solid var(--warm); outline-offset: 3px; border-radius: 6px; }
+    /* Byte stays in its own space: no overlays, downloads, or animation library. */
+    .companion { width: min(100%, 300px); margin-top: 1.5rem; border: 1px solid var(--line); border-radius: 16px; background: var(--accent-soft); overflow: hidden; }
+    .companion[hidden], .companion [hidden] { display: none; }
+    .companion-stage { position: relative; height: 78px; margin: 0 12px; }
+    .companion-pet { position: absolute; left: 0; bottom: 2px; width: 60px; height: 64px; padding: 4px; border: 0; background: transparent; color: var(--accent); cursor: pointer; animation: byte-stroll 12s ease-in-out infinite; }
+    .companion-pet svg { display: block; width: 100%; height: 100%; overflow: visible; animation: byte-bob 1.6s ease-in-out infinite; }
+    .byte-eyes { transform-box: fill-box; transform-origin: center; animation: byte-blink 5s infinite; }
+    .byte-hand { transform-box: fill-box; transform-origin: 25% 80%; }
+    .companion-pet:hover .byte-hand, .companion-pet:focus-visible .byte-hand, .companion.is-waving .byte-hand { animation: byte-wave .35s ease-in-out 4 alternate; }
+    .companion-message { position: absolute; top: 9px; right: 8px; margin: 0; padding: .3rem .6rem; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); color: var(--text); font-size: .74rem; pointer-events: none; }
+    .companion-toolbar { display: flex; align-items: center; gap: .3rem; padding: 0 .65rem .35rem; color: var(--muted); font-size: .7rem; }
+    .companion-toolbar > span { margin-right: auto; }
+    .companion-toolbar button { min-height: 34px; padding: .3rem .45rem; color: var(--text); border: 0; background: transparent; cursor: pointer; border-radius: 8px; font-size: .72rem; }
+    .companion-toolbar button:hover { background: var(--accent-soft); }
+    .companion.is-paused *, .companion.is-offscreen *, .companion.is-waving > .companion-stage > .companion-pet { animation-play-state: paused !important; }
+    .companion.is-hidden .companion-stage, .companion.is-hidden #companion-pause { display: none; }
+    .companion.is-hidden .companion-toolbar { padding-top: .35rem; }
+    @keyframes byte-stroll { 0%, 12% { transform: translateX(0); } 45%, 62% { transform: translateX(175px); } 92%, 100% { transform: translateX(0); } }
+    @keyframes byte-bob { 0%, 100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-4px) rotate(2deg); } }
+    @keyframes byte-blink { 0%, 43%, 47%, 100% { transform: scaleY(1); } 45% { transform: scaleY(.1); } }
+    @keyframes byte-wave { from { transform: rotate(-15deg); } to { transform: rotate(30deg); } }
+    .contact-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: .7rem; }
+    .contact-email { margin: 1.3rem 0 .3rem; color: var(--text); font-size: clamp(.72rem, 2.6vw, .9rem); }
+    .email-tools { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: .5rem 1rem; font-size: .8rem; color: var(--muted); }
+    .email-tools button { min-height: 42px; padding: .4rem .7rem; border: 1px solid var(--line); border-radius: 10px; background: var(--surface-2); color: var(--text); cursor: pointer; }
+    .email-status { min-height: 1.6em; margin: .35rem 0 0; color: var(--accent); font-size: .78rem; }
     @media (max-width: 980px) {
       .nav-links { gap: .85rem; }.nav-links a { font-size: .82rem; }
       .services-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
@@ -197,18 +224,27 @@
     }
     @media (max-width: 760px) {
       .container { width: min(var(--max), calc(100% - 34px)); }
-      .nav { min-height: 68px; }.menu-toggle { display: grid; }
+      .nav { min-height: 68px; gap: .5rem; }.menu-toggle { display: grid; }
       .nav-links { display: none; position: absolute; top: calc(100% + 1px); left: 0; right: 0; padding: 1rem 22px 1.2rem; background: var(--bg); border-bottom: 1px solid var(--line); flex-direction: column; align-items: stretch; gap: 0; box-shadow: var(--shadow); }
       .nav-links.open { display: flex; }.nav-links a { padding: .75rem .2rem; font-size: .95rem; border-bottom: 1px solid var(--line); }
-      .hero { padding: 70px 0 66px; }.hero-grid { grid-template-columns: 1fr; gap: 20px; }.hero-copy { max-width: none; }
-      .hero-visual { min-height: 310px; grid-row: 1; }.portrait-halo { width: 270px; }.portrait { width: 230px; }.chip-one { right: 8%; top: 8%; }.chip-two { left: 1%; top: 41%; }.chip-three { right: 1%; bottom: 15%; }.chip-four { left: 11%; bottom: 0; }
+      .hero { padding: 32px 0 56px; }.hero-grid { grid-template-columns: minmax(0, 1fr); gap: 28px; }.hero-copy { max-width: none; }
+      .hero-visual { min-height: 0; grid-row: 1; gap: 22px; width: 100%; }
+      .portrait-stage { position: relative; display: grid; place-items: center; width: min(100%, 260px); aspect-ratio: 1; }
+      .portrait-halo { width: 90%; }
+      .portrait { width: 80%; height: auto; aspect-ratio: 1; }
+      .portrait-labels { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; width: min(100%, 380px); }
+      .orbit-chip { position: static; min-width: 0; justify-content: center; flex-wrap: wrap; column-gap: .4rem; row-gap: 0; padding: .55rem .4rem; font-size: .7rem; box-shadow: none; text-align: center; border-radius: 12px; }
+      .brand { font-size: 1.1rem; gap: .5rem; }
+      .nav-actions { gap: .4rem; }
+      .theme-toggle, .menu-toggle { width: 40px; height: 40px; flex-shrink: 0; }
+      .contact-email { overflow-wrap: anywhere; }
       .scroll-hint { display: none; }.about-grid { grid-template-columns: 1fr; gap: 1.5rem; }
       .projects-featured, .projects-gallery { grid-template-columns: 1fr; }.project-card.compact { grid-template-columns: 36% 1fr; }
       .timeline::before { left: 6px; }.timeline-item { grid-template-columns: 1fr; gap: .45rem; padding-left: 28px; padding-bottom: 1.4rem; }.timeline-date { text-align: left; }.timeline-marker { left: 0; top: 4px; }
       .education-card { grid-template-columns: 1fr; }.education-badge { justify-self: start; }
     }
     @media (max-width: 430px) {
-      .hero-visual { min-height: 280px; }.portrait-halo { width: 238px; }.portrait { width: 205px; }
+      .portrait-stage { width: 230px; }
       h1 { font-size: clamp(2.55rem, 13vw, 3.4rem); }.principles { grid-template-columns: 1fr; }
       .services-grid { grid-template-columns: 1fr; }.project-card.compact { grid-template-columns: 1fr; }
       .project-card.compact .project-cover { aspect-ratio: 16 / 9; }
@@ -246,11 +282,11 @@
           <span class="eyebrow">AI Engineer · Open to opportunities worldwide</span>
           <h1>Ahmed Magdi<span class="gradient-text">.</span></h1>
           <div class="hero-role">Building useful AI systems from models to real workflows.</div>
-          <p class="hero-copy">I build agentic AI, LLM and retrieval applications, document intelligence systems, and computer vision products. My work connects model capabilities to APIs, data pipelines, validation, observability, and operational tools.</p>
+          <p class="hero-copy">I help your team spend less time on repetitive work and get more value from your data. I can build AI assistants that answer from your documents, automate multi-step tasks, turn invoices into reviewable records, and use computer vision to monitor operations. You get practical software connected to your tools, with clear checks and human review where it matters.</p>
           <div class="availability"><span class="status-pill"><span class="status-dot"></span>Available now</span><strong>Cairo, Egypt</strong><span>Remote · Hybrid · On-site worldwide · Willing to relocate</span></div>
           <div class="hero-actions">
             <a class="button button-primary" href="#projects">Explore projects <span aria-hidden="true">↘</span></a>
-            <a class="button button-secondary" href="mailto:ahmed.magdi.ai.eng@gmail.com?subject=Let%E2%80%99s%20talk%20about%20an%20AI%20opportunity">Get in touch <span aria-hidden="true">↗</span></a>
+            <a class="button button-secondary" href="#contact">Get in touch <span aria-hidden="true">↗</span></a>
             <a class="button button-secondary" href="Ahmed_Magdi_CV_AI_Engineer.pdf" target="_blank" rel="noreferrer">View CV <span aria-hidden="true">↗</span></a>
           </div>
           <div class="hero-links" aria-label="Professional profiles">
@@ -258,14 +294,35 @@
             <a href="https://github.com/AhmedMagdi2003" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
             <a href="https://www.kaggle.com/ahmedmagdi23/" target="_blank" rel="noreferrer">Kaggle <span aria-hidden="true">↗</span></a>
           </div>
+          <aside class="companion" id="companion" aria-label="Byte, the animated AI sidekick" hidden>
+            <div class="companion-stage">
+              <button class="companion-pet" id="companion-pet" type="button" aria-label="Say hello to Byte" title="Tap to say hello">
+                <svg viewBox="0 0 64 68" fill="none" aria-hidden="true">
+                  <path d="M32 13V7" stroke="currentColor" stroke-width="3"/><circle cx="32" cy="5" r="3" fill="currentColor"/>
+                  <rect x="13" y="14" width="38" height="29" rx="11" fill="var(--surface)" stroke="currentColor" stroke-width="2.5"/>
+                  <g class="byte-eyes" fill="currentColor"><rect x="22" y="24" width="5" height="7" rx="2.5"/><rect x="37" y="24" width="5" height="7" rx="2.5"/></g>
+                  <path d="M28 35q4 4 8 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <rect x="20" y="45" width="24" height="14" rx="5" fill="currentColor"/>
+                  <path d="M25 59v5m14-5v5M19 48l-7 7" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+                  <g class="byte-hand" stroke="currentColor" stroke-width="4" stroke-linecap="round"><path d="M45 48l9-7v-6"/></g>
+                </svg>
+              </button>
+              <p class="companion-message" id="companion-message" role="status" hidden></p>
+            </div>
+            <div class="companion-toolbar"><span>Byte · AI sidekick</span><button id="companion-pause" type="button" aria-pressed="false" aria-label="Pause Byte animations">Pause</button><button id="companion-hide" type="button" aria-expanded="true" aria-label="Hide Byte">Hide</button></div>
+          </aside>
         </div>
         <div class="hero-visual" aria-label="Ahmed Magdi portrait and areas of work">
-          <div class="portrait-halo" aria-hidden="true"></div>
-          <img class="portrait" src="https://avatars.githubusercontent.com/u/115361398?v=4" alt="Ahmed Magdi" fetchpriority="high" width="318" height="318">
+          <div class="portrait-stage">
+            <div class="portrait-halo" aria-hidden="true"></div>
+            <img class="portrait" src="https://avatars.githubusercontent.com/u/115361398?v=4" alt="Ahmed Magdi" fetchpriority="high" width="318" height="318">
+          </div>
+          <div class="portrait-labels">
           <div class="orbit-chip chip-one"><span>LLM</span> Agent systems</div>
           <div class="orbit-chip chip-two"><span>CV</span> Vision & edge</div>
           <div class="orbit-chip chip-three"><span>RAG</span> Grounded retrieval</div>
           <div class="orbit-chip chip-four"><span>API</span> Product integration</div>
+          </div>
         </div>
       </div>
       <div class="scroll-hint" aria-hidden="true">Scroll to explore ↓</div>
@@ -360,7 +417,7 @@
     </section>
 
     <section class="section contact-section" id="contact">
-      <div class="container"><div class="contact-card reveal"><span class="eyebrow">Let’s work together</span><h2>Have an AI role or workflow to build?</h2><p class="section-intro">I’m open to opportunities worldwide across employment types and work arrangements, and willing to relocate. Tell me what you’re working on or where I could contribute.</p><a class="button button-primary" href="mailto:ahmed.magdi.ai.eng@gmail.com?subject=AI%20engineering%20opportunity">Email Ahmed <span aria-hidden="true">↗</span></a><div class="contact-links"><a href="https://www.linkedin.com/in/ahmedmagdi03/" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://github.com/AhmedMagdi2003" target="_blank" rel="noreferrer">GitHub ↗</a><a href="https://www.kaggle.com/ahmedmagdi23/" target="_blank" rel="noreferrer">Kaggle ↗</a></div></div></div>
+      <div class="container"><div class="contact-card reveal"><span class="eyebrow">Let’s work together</span><h2>Have an AI role or workflow to build?</h2><p class="section-intro">I’m open to opportunities worldwide across employment types and work arrangements, and willing to relocate. Tell me what you’re working on or where I could contribute.</p><div class="contact-actions"><a class="button button-primary" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=ahmed.magdi.ai.eng%40gmail.com&amp;su=AI%20engineering%20opportunity" target="_blank" rel="noreferrer" title="Write to Ahmed in Gmail">Email Ahmed · Gmail <span aria-hidden="true">↗</span></a><a class="button button-secondary" href="https://wa.me/201021803203" target="_blank" rel="noreferrer" aria-label="Chat with Ahmed on WhatsApp at +20 102 180 3203">WhatsApp <span aria-hidden="true">↗</span></a></div><p class="contact-email" id="contact-email">ahmed.magdi.ai.eng@gmail.com</p><div class="email-tools"><button id="copy-email" type="button">Copy email address</button><a href="mailto:ahmed.magdi.ai.eng@gmail.com?subject=AI%20engineering%20opportunity">Use my email app ↗</a></div><p class="email-status" id="email-status" role="status"></p><div class="contact-links"><a href="https://www.linkedin.com/in/ahmedmagdi03/" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://github.com/AhmedMagdi2003" target="_blank" rel="noreferrer">GitHub ↗</a><a href="https://www.kaggle.com/ahmedmagdi23/" target="_blank" rel="noreferrer">Kaggle ↗</a></div></div></div>
     </section>
   </main>
   <footer class="site-footer"><div class="container footer-row"><span>© <span id="year">2026</span> Ahmed Magdi · AI Engineer</span><span>Built to show the work clearly.</span><a href="#top">Back to top ↑</a></div></footer>
@@ -400,6 +457,76 @@
         menuButton.setAttribute('aria-expanded', 'false');
         menuButton.setAttribute('aria-label', 'Open navigation');
       }));
+      const emailAddress = document.getElementById('contact-email').textContent;
+      document.getElementById('copy-email').addEventListener('click', async () => {
+        const status = document.getElementById('email-status');
+        try {
+          await navigator.clipboard.writeText(emailAddress);
+          status.textContent = 'Email address copied.';
+        } catch (_) {
+          const selection = window.getSelection();
+          const range = document.createRange();
+          range.selectNodeContents(document.getElementById('contact-email'));
+          selection.removeAllRanges();
+          selection.addRange(range);
+          status.textContent = 'Select Copy to copy the highlighted email address.';
+        }
+      });
+      const companion = document.getElementById('companion');
+      const pauseButton = document.getElementById('companion-pause');
+      const hideButton = document.getElementById('companion-hide');
+      const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+      let petPaused = false;
+      let petHidden = false;
+      try {
+        petPaused = localStorage.getItem('am-byte-paused') === 'true';
+        petHidden = localStorage.getItem('am-byte-hidden') === 'true';
+      } catch (_) {}
+      const syncCompanion = () => {
+        const paused = petPaused || motionPreference.matches;
+        companion.classList.toggle('is-paused', paused);
+        companion.classList.toggle('is-hidden', petHidden);
+        pauseButton.textContent = paused ? 'Play' : 'Pause';
+        pauseButton.setAttribute('aria-pressed', String(paused));
+        pauseButton.setAttribute('aria-label', paused ? 'Play Byte animations' : 'Pause Byte animations');
+        pauseButton.disabled = motionPreference.matches;
+        pauseButton.title = motionPreference.matches ? 'Animations follow your reduced motion preference' : '';
+        hideButton.textContent = petHidden ? 'Show' : 'Hide';
+        hideButton.setAttribute('aria-expanded', String(!petHidden));
+        hideButton.setAttribute('aria-label', petHidden ? 'Show Byte' : 'Hide Byte');
+      };
+      pauseButton.addEventListener('click', () => {
+        petPaused = !petPaused;
+        try { localStorage.setItem('am-byte-paused', String(petPaused)); } catch (_) {}
+        syncCompanion();
+      });
+      hideButton.addEventListener('click', () => {
+        petHidden = !petHidden;
+        try { localStorage.setItem('am-byte-hidden', String(petHidden)); } catch (_) {}
+        syncCompanion();
+      });
+      let helloTimer;
+      document.getElementById('companion-pet').addEventListener('click', () => {
+        const message = document.getElementById('companion-message');
+        clearTimeout(helloTimer);
+        message.textContent = 'Hi! Let’s build something.';
+        message.hidden = false;
+        companion.classList.add('is-waving');
+        helloTimer = setTimeout(() => { message.hidden = true; companion.classList.remove('is-waving'); }, 2000);
+      });
+      motionPreference.addEventListener('change', syncCompanion);
+      syncCompanion();
+      companion.hidden = false;
+      let petOnScreen = true;
+      const syncPetVisibility = () => companion.classList.toggle('is-offscreen', document.hidden || !petOnScreen);
+      document.addEventListener('visibilitychange', syncPetVisibility);
+      if ('IntersectionObserver' in window) {
+        const petObserver = new IntersectionObserver(entries => {
+          petOnScreen = entries[0].isIntersecting;
+          syncPetVisibility();
+        });
+        petObserver.observe(companion);
+      }
       document.getElementById('year').textContent = new Date().getFullYear();
       const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       const revealItems = document.querySelectorAll('.reveal');
