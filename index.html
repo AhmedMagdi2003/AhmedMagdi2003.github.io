@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0c1418">
+  <meta name="description" content="Ahmed Magdi is an AI Engineer building practical agentic AI, LLM, retrieval, document intelligence, and computer vision systems. Open to roles and projects worldwide.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Ahmed Magdi — AI Engineer">
+  <meta property="og:description" content="Practical AI systems, from agent workflows and document intelligence to computer vision and operational tools.">
+  <meta property="og:image" content="https://raw.githubusercontent.com/AhmedMagdi2003/AhmedMagdi2003/e731285370a62b7542e0fc4c48cb7d50f7ed852f/assets/projects/sahm-ai.svg">
+  <meta name="color-scheme" content="dark light">
+  <title>Ahmed Magdi — AI Engineer</title>
+  <link rel="preconnect" href="https://avatars.githubusercontent.com">
+  <link rel="preconnect" href="https://raw.githubusercontent.com">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0c1418;
+      --bg-deep: #091114;
+      --surface: #111f23;
+      --surface-2: #17282c;
+      --surface-3: #1c3033;
+      --text: #eff6f3;
+      --muted: #a4b8b5;
+      --faint: #718985;
+      --line: rgba(187, 220, 212, .13);
+      --accent: #45d5b2;
+      --accent-strong: #19b694;
+      --accent-soft: rgba(69, 213, 178, .12);
+      --warm: #f2b36e;
+      --shadow: 0 24px 70px rgba(0, 0, 0, .24);
+      --radius: 22px;
+      --max: 1160px;
+    }
+    html[data-theme="light"] {
+      color-scheme: light;
+      --bg: #f4f6f0;
+      --bg-deep: #eaf0e9;
+      --surface: #ffffff;
+      --surface-2: #eef4f0;
+      --surface-3: #e3efea;
+      --text: #142725;
+      --muted: #536a65;
+      --faint: #6e837c;
+      --line: rgba(27, 65, 55, .13);
+      --accent: #087f70;
+      --accent-strong: #066b60;
+      --accent-soft: rgba(8, 127, 112, .10);
+      --warm: #b9652d;
+      --shadow: 0 24px 70px rgba(33, 71, 59, .10);
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body {
+      margin: 0; background: var(--bg); color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65; -webkit-font-smoothing: antialiased;
+      transition: background .25s ease, color .25s ease;
+    }
+    a { color: inherit; text-decoration: none; }
+    a:hover { color: var(--accent); }
+    button { font: inherit; }
+    img { display: block; max-width: 100%; }
+    .skip-link { position: absolute; left: 1rem; top: -5rem; z-index: 100; padding: .8rem 1rem; background: var(--accent); color: #071512; border-radius: 10px; font-weight: 800; }
+    .skip-link:focus { top: 1rem; }
+    .container { width: min(var(--max), calc(100% - 48px)); margin-inline: auto; }
+    .site-header { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(16px); background: color-mix(in srgb, var(--bg) 88%, transparent); border-bottom: 1px solid var(--line); }
+    .nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
+    .brand { display: inline-flex; align-items: center; gap: .7rem; font-weight: 850; letter-spacing: -.04em; font-size: 1.22rem; white-space: nowrap; }
+    .brand-mark { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 13px; background: var(--accent-soft); border: 1px solid color-mix(in srgb, var(--accent) 32%, transparent); color: var(--accent); font-size: .86rem; letter-spacing: -.05em; }
+    .nav-links { display: flex; align-items: center; gap: clamp(.9rem, 2.4vw, 2rem); }
+    .nav-links a { color: var(--muted); font-size: .9rem; font-weight: 650; transition: color .18s ease; }
+    .nav-links a:hover, .nav-links a[aria-current="location"] { color: var(--accent); }
+    .nav-actions { display: flex; align-items: center; gap: .7rem; }
+    .theme-toggle, .menu-toggle { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; color: var(--text); border: 1px solid var(--line); background: var(--surface); cursor: pointer; }
+    .theme-toggle svg, .menu-toggle svg { width: 18px; height: 18px; }
+    .menu-toggle { display: none; border-radius: 12px; }
+    .hero { position: relative; overflow: hidden; padding: clamp(76px, 10vw, 132px) 0 86px; background: radial-gradient(ellipse at 78% 45%, color-mix(in srgb, var(--accent) 10%, transparent), transparent 42%), linear-gradient(135deg, var(--bg-deep), var(--bg) 62%); }
+    .hero::after { content: ""; position: absolute; width: 420px; height: 420px; border-radius: 50%; right: -180px; top: -240px; border: 1px solid var(--line); box-shadow: 0 0 0 46px color-mix(in srgb, var(--line) 40%, transparent), 0 0 0 92px color-mix(in srgb, var(--line) 25%, transparent); pointer-events: none; }
+    .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1.08fr .92fr; align-items: center; gap: clamp(48px, 7vw, 100px); }
+    .eyebrow { display: inline-flex; align-items: center; gap: .6rem; color: var(--accent); text-transform: uppercase; letter-spacing: .15em; font-size: .76rem; font-weight: 850; }
+    .eyebrow::before { content: ""; width: 24px; height: 1px; background: currentColor; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { margin: 18px 0 8px; max-width: 690px; font-size: clamp(3rem, 6vw, 5.25rem); line-height: .99; letter-spacing: -.065em; font-weight: 850; }
+    .gradient-text { color: var(--accent); }
+    .hero-role { color: var(--muted); font-size: clamp(1.24rem, 2.4vw, 1.75rem); font-weight: 650; letter-spacing: -.025em; }
+    .hero-copy { max-width: 650px; margin: 1.35rem 0 1.3rem; color: var(--muted); font-size: clamp(1rem, 1.5vw, 1.12rem); line-height: 1.8; }
+    .availability { display: flex; flex-wrap: wrap; gap: .55rem .9rem; align-items: center; color: var(--muted); font-size: .88rem; }
+    .availability strong { color: var(--text); }
+    .status-pill { display: inline-flex; align-items: center; gap: .52rem; padding: .46rem .76rem; border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent); background: var(--accent-soft); color: var(--accent); border-radius: 999px; font-size: .8rem; font-weight: 780; }
+    .status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 15%, transparent); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: .85rem; margin-top: 2rem; }
+    .button { display: inline-flex; align-items: center; justify-content: center; gap: .65rem; min-height: 50px; padding: .8rem 1.2rem; border-radius: 999px; border: 1px solid transparent; font-weight: 780; font-size: .91rem; transition: transform .18s ease, background .18s ease, border-color .18s ease; }
+    .button:hover { transform: translateY(-2px); color: inherit; }
+    .button-primary { color: #071512; background: var(--accent); box-shadow: 0 12px 30px color-mix(in srgb, var(--accent) 22%, transparent); }
+    .button-primary:hover { background: var(--accent-strong); color: #fff; }
+    .button-secondary { border-color: var(--line); background: var(--surface); }
+    .button-secondary:hover { border-color: var(--accent); }
+    .hero-links { display: flex; align-items: center; flex-wrap: wrap; gap: 1rem; margin-top: 1.6rem; color: var(--muted); font-size: .88rem; }
+    .hero-links a { display: inline-flex; align-items: center; gap: .4rem; }
+    .hero-visual { position: relative; display: grid; place-items: center; min-height: 390px; }
+    .portrait-halo { position: absolute; width: min(82%, 360px); aspect-ratio: 1; border-radius: 50%; border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent); box-shadow: 0 0 0 18px color-mix(in srgb, var(--accent) 5%, transparent), 0 0 80px color-mix(in srgb, var(--accent) 14%, transparent); }
+    .portrait { position: relative; z-index: 1; width: min(72%, 318px); aspect-ratio: 1; object-fit: cover; border-radius: 50%; border: 8px solid var(--surface); box-shadow: var(--shadow); }
+    .orbit-chip { position: absolute; z-index: 2; display: flex; align-items: center; gap: .5rem; padding: .65rem .8rem; color: var(--text); background: var(--surface); border: 1px solid var(--line); border-radius: 14px; font-size: .76rem; font-weight: 760; box-shadow: var(--shadow); }
+    .orbit-chip span { color: var(--accent); font-weight: 900; }
+    .chip-one { top: 10%; right: 7%; }.chip-two { left: -2%; top: 40%; }.chip-three { right: 0; bottom: 15%; }.chip-four { left: 11%; bottom: 2%; }
+    .scroll-hint { position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); color: var(--faint); font-size: .74rem; letter-spacing: .12em; text-transform: uppercase; }
+    .section { padding: clamp(76px, 9vw, 112px) 0; }
+    .section-alt { background: var(--bg-deep); border-block: 1px solid var(--line); }
+    .section-head { max-width: 740px; margin: 0 auto 3rem; text-align: center; }
+    .section-head .eyebrow { justify-content: center; }
+    h2 { margin: .8rem 0 .8rem; font-size: clamp(2rem, 4vw, 3.15rem); line-height: 1.1; letter-spacing: -.05em; }
+    .section-intro { color: var(--muted); font-size: 1rem; line-height: 1.8; margin-bottom: 0; }
+    .about-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(36px, 6vw, 80px); align-items: start; }
+    .about-copy p { color: var(--muted); font-size: 1.02rem; line-height: 1.85; }
+    .about-copy strong { color: var(--text); }
+    .principles { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: .8rem; margin-top: 1.6rem; }
+    .principle { padding: .9rem 1rem; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); font-size: .86rem; font-weight: 700; }
+    .principle span { color: var(--accent); margin-right: .45rem; }
+    .skill-panel { display: grid; gap: .8rem; }
+    .skill-group { padding: 1.1rem 1.15rem; border: 1px solid var(--line); border-radius: 17px; background: var(--surface); }
+    .skill-group h3 { margin: 0 0 .75rem; font-size: .9rem; letter-spacing: -.01em; }
+    .chips { display: flex; flex-wrap: wrap; gap: .45rem; }
+    .tag { display: inline-flex; align-items: center; min-height: 28px; padding: .25rem .55rem; background: var(--surface-2); border: 1px solid var(--line); color: var(--muted); border-radius: 999px; font-size: .72rem; font-weight: 720; }
+    .services-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 1rem; }
+    .service-card { height: 100%; padding: 1.35rem; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); transition: transform .2s ease, border-color .2s ease; }
+    .service-card:hover { transform: translateY(-4px); border-color: color-mix(in srgb, var(--accent) 55%, var(--line)); }
+    .service-icon { display: grid; place-items: center; width: 48px; height: 48px; margin-bottom: 1.1rem; border-radius: 15px; color: var(--accent); background: var(--accent-soft); font-size: .72rem; font-weight: 900; letter-spacing: -.04em; }
+    .service-card h3 { margin-bottom: .55rem; font-size: 1.04rem; line-height: 1.3; }
+    .service-card p { margin: 0; color: var(--muted); font-size: .87rem; line-height: 1.75; }
+    .projects-featured { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1.1rem; }
+    .project-card { min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease; }
+    .project-card:hover { transform: translateY(-4px); border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); box-shadow: var(--shadow); }
+    .project-cover-link { display: block; overflow: hidden; background: var(--surface-2); }
+    .project-cover { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: contain; transition: transform .4s ease; }
+    .project-card:hover .project-cover { transform: scale(1.025); }
+    .project-body { padding: 1.2rem 1.25rem 1.35rem; }
+    .project-meta { display: flex; align-items: center; justify-content: space-between; gap: .6rem; margin-bottom: .6rem; color: var(--faint); text-transform: uppercase; letter-spacing: .1em; font-size: .68rem; font-weight: 820; }
+    .project-meta .team { color: var(--warm); }
+    .project-body h3 { margin: 0 0 .55rem; font-size: 1.18rem; line-height: 1.3; letter-spacing: -.025em; }
+    .project-body p { margin: 0; color: var(--muted); font-size: .86rem; line-height: 1.75; }
+    .project-body .role { margin-top: .75rem; padding-top: .75rem; border-top: 1px solid var(--line); color: var(--text); font-size: .81rem; }
+    .project-body .role strong { color: var(--accent); }
+    .project-actions { display: flex; flex-wrap: wrap; gap: .55rem .9rem; margin-top: 1rem; font-size: .8rem; font-weight: 780; }
+    .project-actions a { color: var(--accent); }
+    .gallery-divider { display: flex; align-items: center; gap: 1rem; margin: 3.2rem 0 1.2rem; color: var(--muted); font-weight: 780; }
+    .gallery-divider::after { content: ""; height: 1px; background: var(--line); flex: 1; }
+    .projects-gallery { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: .95rem; }
+    .project-card.compact { display: flex; flex-direction: column; align-items: stretch; }
+    .project-card.compact .project-cover-link { width: 100%; }
+    .project-card.compact .project-cover { height: auto; aspect-ratio: 16 / 9; object-fit: contain; }
+    .project-card.compact .project-body { padding: 1rem; }
+    .project-card.compact .project-body h3 { font-size: .98rem; }
+    .project-card.compact .project-body p { font-size: .79rem; }
+    .project-card.compact .chips { margin-top: .8rem; }
+    .more-projects { margin-top: 1.5rem; padding: 1.25rem; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+    .more-projects h3 { margin-bottom: .9rem; font-size: 1rem; }
+    .text-projects { display: flex; flex-wrap: wrap; gap: .55rem; }
+    .text-projects a { padding: .52rem .72rem; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); background: var(--surface-2); font-size: .78rem; font-weight: 700; }
+    .text-projects a:hover { border-color: var(--accent); color: var(--accent); }
+    .timeline { position: relative; max-width: 850px; margin: 0 auto; }
+    .timeline::before { content: ""; position: absolute; left: 122px; top: 10px; bottom: 10px; width: 1px; background: var(--line); }
+    .timeline-item { position: relative; display: grid; grid-template-columns: 102px 1fr; gap: 42px; padding-bottom: 2rem; }
+    .timeline-date { padding-top: .15rem; text-align: right; color: var(--accent); font-size: .8rem; font-weight: 800; }
+    .timeline-marker { position: absolute; top: 6px; left: 116px; width: 13px; height: 13px; border-radius: 50%; background: var(--accent); border: 3px solid var(--bg); box-shadow: 0 0 0 1px var(--accent); }
+    .timeline-card { padding: 1.15rem 1.25rem; border: 1px solid var(--line); border-radius: 17px; background: var(--surface); }
+    .timeline-card h3 { margin: 0 0 .25rem; font-size: 1rem; }
+    .timeline-card .org { color: var(--warm); font-size: .82rem; font-weight: 700; }
+    .timeline-card p { margin: .65rem 0 0; color: var(--muted); font-size: .85rem; line-height: 1.75; }
+    .education-card { max-width: 850px; margin: 1rem auto 0; padding: 1.3rem 1.4rem; display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: center; border: 1px solid var(--line); border-radius: 18px; background: var(--surface); }
+    .education-card h3 { margin: 0 0 .3rem; font-size: 1rem; }
+    .education-card p { margin: 0; color: var(--muted); font-size: .86rem; }
+    .education-badge { padding: .55rem .8rem; border-radius: 999px; background: var(--accent-soft); color: var(--accent); font-size: .77rem; font-weight: 800; white-space: nowrap; }
+    .training { max-width: 850px; margin: 1rem auto 0; padding: 1.2rem 1.4rem; border: 1px solid var(--line); border-radius: 18px; background: var(--surface); }
+    .training h3 { margin: 0 0 .75rem; font-size: .98rem; }
+    .training p { margin: 0; color: var(--muted); font-size: .84rem; line-height: 1.9; }
+    .contact-section { position: relative; overflow: hidden; background: radial-gradient(ellipse at 50% 130%, color-mix(in srgb, var(--accent) 15%, transparent), transparent 58%), var(--bg-deep); border-top: 1px solid var(--line); }
+    .contact-card { max-width: 800px; margin: 0 auto; text-align: center; padding: clamp(2rem, 6vw, 4rem); border: 1px solid var(--line); border-radius: 30px; background: color-mix(in srgb, var(--surface) 90%, transparent); box-shadow: var(--shadow); }
+    .contact-card .section-intro { max-width: 620px; margin: 0 auto 1.5rem; }
+    .contact-links { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: .65rem; margin-top: 1.3rem; }
+    .contact-links a { display: inline-flex; align-items: center; gap: .45rem; padding: .62rem .85rem; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); background: var(--surface-2); font-size: .82rem; font-weight: 750; }
+    .contact-links a:hover { border-color: var(--accent); color: var(--accent); }
+    .site-footer { padding: 1.25rem 0; border-top: 1px solid var(--line); color: var(--faint); font-size: .78rem; }
+    .footer-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .footer-row a { color: var(--muted); }
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity .55s ease, transform .55s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    :focus-visible { outline: 3px solid var(--warm); outline-offset: 3px; border-radius: 6px; }
+    @media (max-width: 980px) {
+      .nav-links { gap: .85rem; }.nav-links a { font-size: .82rem; }
+      .services-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+      .project-card.compact { grid-template-columns: 1fr; }.project-card.compact .project-cover { aspect-ratio: 16 / 9; height: auto; }
+    }
+    @media (max-width: 760px) {
+      .container { width: min(var(--max), calc(100% - 34px)); }
+      .nav { min-height: 68px; }.menu-toggle { display: grid; }
+      .nav-links { display: none; position: absolute; top: calc(100% + 1px); left: 0; right: 0; padding: 1rem 22px 1.2rem; background: var(--bg); border-bottom: 1px solid var(--line); flex-direction: column; align-items: stretch; gap: 0; box-shadow: var(--shadow); }
+      .nav-links.open { display: flex; }.nav-links a { padding: .75rem .2rem; font-size: .95rem; border-bottom: 1px solid var(--line); }
+      .hero { padding: 70px 0 66px; }.hero-grid { grid-template-columns: 1fr; gap: 20px; }.hero-copy { max-width: none; }
+      .hero-visual { min-height: 310px; grid-row: 1; }.portrait-halo { width: 270px; }.portrait { width: 230px; }.chip-one { right: 8%; top: 8%; }.chip-two { left: 1%; top: 41%; }.chip-three { right: 1%; bottom: 15%; }.chip-four { left: 11%; bottom: 0; }
+      .scroll-hint { display: none; }.about-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .projects-featured, .projects-gallery { grid-template-columns: 1fr; }.project-card.compact { grid-template-columns: 36% 1fr; }
+      .timeline::before { left: 6px; }.timeline-item { grid-template-columns: 1fr; gap: .45rem; padding-left: 28px; padding-bottom: 1.4rem; }.timeline-date { text-align: left; }.timeline-marker { left: 0; top: 4px; }
+      .education-card { grid-template-columns: 1fr; }.education-badge { justify-self: start; }
+    }
+    @media (max-width: 430px) {
+      .hero-visual { min-height: 280px; }.portrait-halo { width: 238px; }.portrait { width: 205px; }
+      h1 { font-size: clamp(2.55rem, 13vw, 3.4rem); }.principles { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }.project-card.compact { grid-template-columns: 1fr; }
+      .project-card.compact .project-cover { aspect-ratio: 16 / 9; }
+      .footer-row { flex-direction: column; align-items: flex-start; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="Ahmed Magdi home"><span class="brand-mark">AM</span><span>Ahmed Magdi</span></a>
+      <nav class="nav-links" id="primary-nav" aria-label="Main navigation">
+        <a href="#about">About</a><a href="#services">What I Build</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#contact">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to light theme" title="Toggle color theme">
+          <svg id="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg>
+        </button>
+        <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open navigation" aria-controls="primary-nav" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="container hero-grid">
+        <div class="hero-copy-block">
+          <span class="eyebrow">AI Engineer · Open to opportunities worldwide</span>
+          <h1>Ahmed Magdi<span class="gradient-text">.</span></h1>
+          <div class="hero-role">Building useful AI systems from models to real workflows.</div>
+          <p class="hero-copy">I build agentic AI, LLM and retrieval applications, document intelligence systems, and computer vision products. My work connects model capabilities to APIs, data pipelines, validation, observability, and operational tools.</p>
+          <div class="availability"><span class="status-pill"><span class="status-dot"></span>Available now</span><strong>Cairo, Egypt</strong><span>Remote · Hybrid · On-site worldwide · Willing to relocate</span></div>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#projects">Explore projects <span aria-hidden="true">↘</span></a>
+            <a class="button button-secondary" href="mailto:ahmed.magdi.ai.eng@gmail.com?subject=Let%E2%80%99s%20talk%20about%20an%20AI%20opportunity">Get in touch <span aria-hidden="true">↗</span></a>
+            <a class="button button-secondary" href="Ahmed_Magdi_CV_AI_Engineer.pdf" target="_blank" rel="noreferrer">View CV <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="hero-links" aria-label="Professional profiles">
+            <a href="https://www.linkedin.com/in/ahmedmagdi03/" target="_blank" rel="noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
+            <a href="https://github.com/AhmedMagdi2003" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+            <a href="https://www.kaggle.com/ahmedmagdi23/" target="_blank" rel="noreferrer">Kaggle <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+        <div class="hero-visual" aria-label="Ahmed Magdi portrait and areas of work">
+          <div class="portrait-halo" aria-hidden="true"></div>
+          <img class="portrait" src="https://avatars.githubusercontent.com/u/115361398?v=4" alt="Ahmed Magdi" fetchpriority="high" width="318" height="318">
+          <div class="orbit-chip chip-one"><span>LLM</span> Agent systems</div>
+          <div class="orbit-chip chip-two"><span>CV</span> Vision & edge</div>
+          <div class="orbit-chip chip-three"><span>RAG</span> Grounded retrieval</div>
+          <div class="orbit-chip chip-four"><span>API</span> Product integration</div>
+        </div>
+      </div>
+      <div class="scroll-hint" aria-hidden="true">Scroll to explore ↓</div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container about-grid">
+        <div class="about-copy reveal">
+          <span class="eyebrow">About me</span>
+          <h2>Engineering that connects AI to the way people work.</h2>
+          <p>My focus is practical AI engineering: <strong>agent workflows, grounded retrieval, multimodal systems, computer vision, and applied machine learning.</strong> I work across Python backends, user-facing applications, databases, external services, and operational dashboards.</p>
+          <p>That range shows up in projects from a collaborative multi-agent marketing platform and an AI-assisted document processor to a conveyor vision system with live production telemetry.</p>
+          <div class="principles">
+            <div class="principle"><span>✓</span> Connect models to real workflows</div>
+            <div class="principle"><span>✓</span> Build validation and review into the flow</div>
+            <div class="principle"><span>✓</span> Integrate APIs, data, and product UI</div>
+            <div class="principle"><span>✓</span> Make system behavior observable</div>
+          </div>
+        </div>
+        <div class="skill-panel reveal" aria-label="Technical toolkit">
+          <div class="skill-group"><h3>Agents, LLMs & retrieval</h3><div class="chips"><span class="tag">LangGraph</span><span class="tag">LangChain</span><span class="tag">Hugging Face</span><span class="tag">Qwen</span><span class="tag">RAG</span><span class="tag">ChromaDB</span><span class="tag">Qdrant</span><span class="tag">QLoRA / PEFT</span><span class="tag">LLM evaluation</span></div></div>
+          <div class="skill-group"><h3>Vision & applied ML</h3><div class="chips"><span class="tag">PyTorch</span><span class="tag">TensorFlow</span><span class="tag">OpenCV</span><span class="tag">YOLOv8</span><span class="tag">BoT-SORT</span><span class="tag">scikit-learn</span><span class="tag">pandas</span><span class="tag">NumPy</span><span class="tag">SigLIP2</span></div></div>
+          <div class="skill-group"><h3>Backend, product & data</h3><div class="chips"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">PostgreSQL</span><span class="tag">SQLAlchemy</span><span class="tag">Pydantic</span><span class="tag">TypeScript</span><span class="tag">Next.js</span><span class="tag">Streamlit</span><span class="tag">MQTT</span></div></div>
+          <div class="skill-group"><h3>Integrations & delivery</h3><div class="chips"><span class="tag">Google Drive / Sheets</span><span class="tag">Google Apps Script</span><span class="tag">Make.com</span><span class="tag">Apify</span><span class="tag">Playwright</span><span class="tag">LangSmith</span><span class="tag">Langfuse</span><span class="tag">Docker</span><span class="tag">AWS</span><span class="tag">C++</span><span class="tag">MongoDB</span><span class="tag">ONNX Runtime</span><span class="tag">Raspberry Pi</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="services">
+      <div class="container">
+        <div class="section-head reveal"><span class="eyebrow">Where I can add value</span><h2>From AI idea to useful, connected software.</h2><p class="section-intro">I help teams reduce repetitive work, make trusted knowledge easier to use, and connect model capabilities to the APIs, data, interfaces, and review steps that real workflows need. Available for full-time, contract, part-time, internship, and freelance work.</p></div>
+        <div class="services-grid">
+          <article class="service-card reveal"><div class="service-icon">AG</div><h3>Agentic workflow automation</h3><p>Automate support, content, and operations tasks with clear tool boundaries, escalation paths, and human approval.</p></article>
+          <article class="service-card reveal"><div class="service-icon">RAG</div><h3>Grounded LLM applications</h3><p>Make selected knowledge sources searchable and provide answers tied to retrieved context and structured outputs.</p></article>
+          <article class="service-card reveal"><div class="service-icon">DOC</div><h3>Document intelligence</h3><p>Turn PDFs and images into structured records with field checks, review for uncertain cases, and business-tool integrations.</p></article>
+          <article class="service-card reveal"><div class="service-icon">CV</div><h3>Vision & connected systems</h3><p>Connect detection and tracking outputs to APIs, event streams, databases, and operational dashboards.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-head reveal"><span class="eyebrow">Selected engineering work</span><h2>Projects first. Implementation details where they matter.</h2><p class="section-intro">A selection of personal and team projects. Team scope and my contribution are called out separately.</p></div>
+        <div class="projects-featured">
+          <article class="project-card reveal">
+            <a class="project-cover-link" href="https://github.com/Yossef-80/SAHM-AI-backend" target="_blank" rel="noreferrer" aria-label="Open SAHM AI backend repository"><img class="project-cover" src="assets/images/featured-projects/sahm-ai.svg" alt="SAHM AI: five role-based agents connected through an orchestrator and shared brand memory" loading="lazy" width="1200" height="675"></a>
+            <div class="project-body"><div class="project-meta"><span>Agentic AI · Team project</span><span class="team">Featured</span></div><h3>SAHM AI · Marketing operating system</h3><p>Marketing research, strategy, creative work, analytics, and campaign planning share brand context under deterministic orchestration.</p><p class="role"><strong>My contribution:</strong> Substantial backend and frontend work, with emphasis on backend—agent/orchestrator wiring, research and verification, compact brand memory, Arabic routing, and database performance.</p><div class="chips"><span class="tag">LangGraph</span><span class="tag">LangChain</span><span class="tag">PostgreSQL</span><span class="tag">Next.js</span><span class="tag">Playwright</span></div><div class="project-actions"><a href="https://github.com/Yossef-80/SAHM-AI-backend" target="_blank" rel="noreferrer">Backend ↗</a><a href="https://github.com/Yossef-80/SAHM-AI-frontend" target="_blank" rel="noreferrer">Frontend ↗</a></div></div>
+          </article>
+          <article class="project-card reveal">
+            <a class="project-cover-link" href="https://github.com/AhmedMagdi2003/Content-Agent" target="_blank" rel="noreferrer" aria-label="Open Content Generation and Publishing Agent"><img class="project-cover" src="assets/images/featured-projects/content-agent.svg" alt="Content Agent: cited drafts move through human review before channel delivery" loading="lazy" width="1200" height="675"></a>
+            <div class="project-body"><div class="project-meta"><span>Agentic AI · Personal project</span><span class="team">Featured</span></div><h3>Content Generation & Publishing Agent</h3><p>Turns a brief and source references into LinkedIn, newsletter, and website drafts, with publication held behind human review.</p><p class="role"><strong>Engineering detail:</strong> Source citations, digest-tracked revisions, approval invalidation after edits, signed jobs, and delivery status. Newsletter delivery creates a Gmail draft; the website channel awaits a CMS connection.</p><div class="chips"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">PostgreSQL</span><span class="tag">LLM APIs</span><span class="tag">Make.com</span></div><div class="project-actions"><a href="https://github.com/AhmedMagdi2003/Content-Agent" target="_blank" rel="noreferrer">Repository ↗</a></div></div>
+          </article>
+          <article class="project-card reveal">
+            <a class="project-cover-link" href="https://github.com/AhmedMagdi2003/Financial-Document-Processer" target="_blank" rel="noreferrer" aria-label="Open Financial Document Processor"><img class="project-cover" src="assets/images/featured-projects/financial-docs.svg" alt="Financial document assistant: invoices become validated, reviewable expense records" loading="lazy" width="1200" height="675"></a>
+            <div class="project-body"><div class="project-meta"><span>Document AI · Personal project</span><span class="team">Featured</span></div><h3>Financial Document Assistant</h3><p>Extracts invoice and receipt data into project spending records, with checks for totals, duplicates, currency, and missing fields.</p><p class="role"><strong>Engineering detail:</strong> Selectable and scanned PDFs, image inputs, reviewable uncertain records, PostgreSQL persistence, audit events, cost tracking, and Google Drive/Sheets workflows.</p><div class="chips"><span class="tag">FastAPI</span><span class="tag">PostgreSQL</span><span class="tag">Multimodal LLM</span><span class="tag">Google Sheets</span></div><div class="project-actions"><a href="https://github.com/AhmedMagdi2003/Financial-Document-Processer" target="_blank" rel="noreferrer">Repository ↗</a></div></div>
+          </article>
+          <article class="project-card reveal">
+            <a class="project-cover-link" href="https://github.com/AhmedMagdi2003/SmartAssemblyLine" target="_blank" rel="noreferrer" aria-label="Open Smart Assembly Line"><img class="project-cover" src="assets/images/featured-projects/assembly-line.svg" alt="Smart Assembly Line: cartons tracked on a conveyor and streamed to a live dashboard" loading="lazy" width="1200" height="675"></a>
+            <div class="project-body"><div class="project-meta"><span>Computer vision · Personal project</span><span class="team">Featured</span></div><h3>Smart Assembly Line</h3><p>Tracks cartons on a conveyor, estimates orientation and transit time, and streams production events to an operations dashboard.</p><p class="role"><strong>Engineering detail:</strong> YOLOv8 tracking with persistent IDs, polygon ROI filtering, finish-line events, OpenCV angle extraction, MQTT, PostgreSQL, and FastAPI/WebSocket dashboard.</p><div class="chips"><span class="tag">OpenCV</span><span class="tag">YOLOv8</span><span class="tag">MQTT</span><span class="tag">FastAPI</span><span class="tag">PostgreSQL</span></div><div class="project-actions"><a href="https://github.com/AhmedMagdi2003/SmartAssemblyLine" target="_blank" rel="noreferrer">Repository ↗</a></div></div>
+          </article>
+        </div>
+
+        <div class="gallery-divider reveal">More selected projects</div>
+        <div class="projects-gallery">
+          <article class="project-card compact reveal"><a class="project-cover-link" href="https://github.com/AhmedMagdi2003/skin-disease-multimodal-rag" target="_blank" rel="noreferrer" aria-label="Open Skin Disease Multimodal RAG"><img class="project-cover" src="https://raw.githubusercontent.com/AhmedMagdi2003/AhmedMagdi2003/refs/heads/main/assets/projects/skin-rag.svg" alt="Multimodal skin-image and medical PDF retrieval demo" loading="lazy" width="1600" height="900"></a><div class="project-body"><div class="project-meta"><span>Multimodal RAG</span></div><h3>Skin Disease Multimodal RAG</h3><p>Retrieves similar skin-image references and medical-document passages from image or text queries. Research/demo scope; no clinical validation is reported.</p><div class="chips"><span class="tag">SigLIP2</span><span class="tag">ChromaDB</span><span class="tag">Qwen3-VL</span></div></div></article>
+          <article class="project-card compact reveal"><a class="project-cover-link" href="https://github.com/MoHatemTC/ops-chatbot-1-round-2" target="_blank" rel="noreferrer" aria-label="Open Chatbot Ops team repository"><img class="project-cover" src="https://raw.githubusercontent.com/AhmedMagdi2003/AhmedMagdi2003/refs/heads/main/assets/projects/ops-agent.svg" alt="Chatbot Ops: grounded learner support with escalation tickets and cohort review" loading="lazy" width="1600" height="900"></a><div class="project-body"><div class="project-meta"><span>Agentic AI · Team contribution</span></div><h3>Chatbot Ops — Round 2</h3><p>Learner support with contextual answers and persisted escalation tickets. My work includes ticket persistence, grounded Q&A, routing observability, multi-cohort support, and leakage evaluation.</p><div class="chips"><span class="tag">FastAPI</span><span class="tag">LangGraph</span><span class="tag">PostgreSQL</span></div></div></article>
+          <article class="project-card compact reveal"><a class="project-cover-link" href="https://github.com/AhmedMagdi2003/ClauseExtraction" target="_blank" rel="noreferrer" aria-label="Open Contract Clause Extraction"><img class="project-cover" src="https://raw.githubusercontent.com/AhmedMagdi2003/AhmedMagdi2003/refs/heads/main/assets/projects/clause-extraction.svg" alt="Contract clause extraction data preparation and QLoRA fine-tuning" loading="lazy" width="1600" height="900"></a><div class="project-body"><div class="project-meta"><span>Fine-tuning pipeline</span></div><h3>Contract Clause Extraction</h3><p>Audits CUAD-style data, analyzes clause categories, creates instruction and chunked datasets, and fine-tunes Qwen2.5 with QLoRA. No accuracy score is stated.</p><div class="chips"><span class="tag">Qwen2.5</span><span class="tag">QLoRA</span><span class="tag">JSONL</span></div></div></article>
+          <article class="project-card compact reveal"><a class="project-cover-link" href="https://www.kaggle.com/competitions/udacity-mlcharity-competition" target="_blank" rel="noreferrer" aria-label="Open Kaggle Charity Donation Prediction project"><img class="project-cover" src="https://raw.githubusercontent.com/AhmedMagdi2003/AhmedMagdi2003/refs/heads/main/assets/projects/kaggle-charity.svg" alt="Charity donation prediction notebook with validated ensemble result" loading="lazy" width="1600" height="900"></a><div class="project-body"><div class="project-meta"><span>Kaggle · Applied ML</span></div><h3>Charity Donation Prediction</h3><p>EDA and prediction for the Udacity ML Charity Competition. Kaggle score: <strong>0.96237</strong>; career record reports 11th of 336 participants.</p><div class="chips"><span class="tag">pandas</span><span class="tag">scikit-learn</span><span class="tag">Ensemble learning</span></div><div class="project-actions"><a href="https://www.kaggle.com/code/ahmedmagdi23/udacity-eda-prediction" target="_blank" rel="noreferrer">Notebook ↗</a></div></div></article>
+          <article class="project-card compact reveal"><a class="project-cover-link" href="https://github.com/AhmedMagdi2003/GTC-Book-Recommendation-System" target="_blank" rel="noreferrer" aria-label="Open Book Recommendation System"><img class="project-cover" src="https://raw.githubusercontent.com/AhmedMagdi2003/AhmedMagdi2003/refs/heads/main/assets/projects/book-recommendation.svg" alt="Book recommendations from similar reader-rating patterns" loading="lazy" width="1600" height="900"></a><div class="project-body"><div class="project-meta"><span>Applied ML · Recommendation</span></div><h3>Book Recommendation System</h3><p>Uses cosine similarity and nearest neighbors over reader-rating patterns, with a Streamlit interface for prepared data and uploaded ratings CSVs.</p><div class="chips"><span class="tag">Python</span><span class="tag">Streamlit</span><span class="tag">scikit-learn</span></div><div class="project-actions"><a href="https://gtc-book-recommendation-system.streamlit.app/" target="_blank" rel="noreferrer">Live app ↗</a><a href="https://github.com/AhmedMagdi2003/GTC-Book-Recommendation-System" target="_blank" rel="noreferrer">Repository ↗</a></div></div></article>
+          <article class="project-card compact reveal"><a class="project-cover-link" href="https://github.com/AhmedMagdi2003/Cardiac_Ailment" target="_blank" rel="noreferrer" aria-label="Open ECG Feature Classification Demo"><img class="project-cover" src="https://raw.githubusercontent.com/AhmedMagdi2003/AhmedMagdi2003/refs/heads/main/assets/projects/ecg-classification.svg" alt="ECG-derived feature classification demo with four output labels" loading="lazy" width="1600" height="900"></a><div class="project-body"><div class="project-meta"><span>Applied ML · Educational demo</span></div><h3>ECG Feature Classification Demo</h3><p>Predicts one of four classes from seven prepared ECG-derived features, with single-record entry and CSV batch prediction. No raw waveform processing or clinical validation is claimed.</p><div class="chips"><span class="tag">Streamlit</span><span class="tag">scikit-learn</span><span class="tag">pandas</span></div><div class="project-actions"><a href="https://github.com/AhmedMagdi2003/Cardiac_Ailment" target="_blank" rel="noreferrer">Repository ↗</a></div></div></article>
+        </div>
+        <div class="more-projects reveal"><h3>Additional applied ML & data work</h3><div class="text-projects"><a href="https://github.com/AhmedMagdi2003/GTC_ML_Project_2_Diabetes_Prediction_Model" target="_blank" rel="noreferrer">Diabetes Prediction ↗</a><a href="https://github.com/AhmedMagdi2003/gtc-ml-project1-hotel-bookings" target="_blank" rel="noreferrer">Hotel Booking Analysis ↗</a><a href="https://www.kaggle.com/code/ahmedmagdi23/best-selling-steam-games-analysis-and-prediction" target="_blank" rel="noreferrer">Steam Games Analysis ↗</a></div></div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="experience">
+      <div class="container">
+        <div class="section-head reveal"><span class="eyebrow">Experience & education</span><h2>Applied work, collaborative engineering, continuous learning.</h2><p class="section-intro">Experience and training that inform how I build and integrate AI systems.</p></div>
+        <div class="timeline">
+          <article class="timeline-item reveal"><span class="timeline-date">Jul 2026–Present</span><span class="timeline-marker" aria-hidden="true"></span><div class="timeline-card"><h3>LLMs & Computer Vision Trainee</h3><span class="org">National Telecommunication Institute (NTI) · On-site</span><p>Practical training across computer vision, diffusion, Transformer/LSTM NLP, foundation-model fine-tuning, multimodal retrieval, and LangChain/LangGraph workflows.</p></div></article>
+          <article class="timeline-item reveal"><span class="timeline-date">Jun–Aug 2026</span><span class="timeline-marker" aria-hidden="true"></span><div class="timeline-card"><h3>Artificial Intelligence Engineer · Internship</h3><span class="org">Sprints · Remote</span><p>Contributed to a LangGraph learner-support system with grounded answers, escalation handling, structured ticket data, and tracing. My internship record reports 40% fewer manual escalations and response latency below 10 seconds.</p></div></article>
+          <article class="timeline-item reveal"><span class="timeline-date">Aug–Sep 2025</span><span class="timeline-marker" aria-hidden="true"></span><div class="timeline-card"><h3>Machine Learning Engineer Intern</h3><span class="org">Genius Technology Center (GTC) · Remote</span><p>Worked with an internship team on an end-to-end book recommendation application, from book-rating data preparation to a deployed Streamlit experience.</p></div></article>
+          <article class="timeline-item reveal"><span class="timeline-date">Jul–Aug 2025</span><span class="timeline-marker" aria-hidden="true"></span><div class="timeline-card"><h3>Machine Learning Engineer Intern</h3><span class="org">ITI Assiut Branch · Remote</span><p>Machine learning internship associated with deep learning and natural language processing work.</p></div></article>
+          <article class="timeline-item reveal"><span class="timeline-date">Apr 2024–Jul 2025</span><span class="timeline-marker" aria-hidden="true"></span><div class="timeline-card"><h3>Electrical Engineer · Apprenticeship</h3><span class="org">ASME Assiut Student Section</span></div></article>
+          <article class="timeline-item reveal"><span class="timeline-date">Aug 2024–Apr 2025</span><span class="timeline-marker" aria-hidden="true"></span><div class="timeline-card"><h3>Data Scientist · Internship</h3><span class="org">Machinfy · Remote</span></div></article>
+          <article class="timeline-item reveal"><span class="timeline-date">Aug–Sep 2024</span><span class="timeline-marker" aria-hidden="true"></span><div class="timeline-card"><h3>IoT Developer · Internship</h3><span class="org">Information Technology Institute (ITI) · Remote</span><p>IoT internship associated with AWS and JavaScript skills.</p></div></article>
+          <article class="timeline-item reveal"><span class="timeline-date">Feb–Apr 2024</span><span class="timeline-marker" aria-hidden="true"></span><div class="timeline-card"><h3>AC Electrical Reviewer · Apprenticeship</h3><span class="org">ASME Assiut Student Section</span></div></article>
+        </div>
+        <div class="education-card reveal"><div><h3>B.Sc. Mechatronics Engineering</h3><p>Faculty of Engineering, Assiut University · Jul 2021 – Jun 2026</p></div><span class="education-badge">GPA 3.2 / 4.0 · Very Good with Honors</span></div>
+        <div class="training reveal"><h3>Selected training</h3><p>Deep Learning Specialization · DeepLearning.AI · LLM Course · Hugging Face · Computer Vision with PyTorch & OpenCV Bootcamp · OpenCV · Associate Data Scientist · DataCamp · Data Science and AI Course · Machinfy · McKinsey Forward Program</p></div>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contact">
+      <div class="container"><div class="contact-card reveal"><span class="eyebrow">Let’s work together</span><h2>Have an AI role or workflow to build?</h2><p class="section-intro">I’m open to opportunities worldwide across employment types and work arrangements, and willing to relocate. Tell me what you’re working on or where I could contribute.</p><a class="button button-primary" href="mailto:ahmed.magdi.ai.eng@gmail.com?subject=AI%20engineering%20opportunity">Email Ahmed <span aria-hidden="true">↗</span></a><div class="contact-links"><a href="https://www.linkedin.com/in/ahmedmagdi03/" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://github.com/AhmedMagdi2003" target="_blank" rel="noreferrer">GitHub ↗</a><a href="https://www.kaggle.com/ahmedmagdi23/" target="_blank" rel="noreferrer">Kaggle ↗</a></div></div></div>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="container footer-row"><span>© <span id="year">2026</span> Ahmed Magdi · AI Engineer</span><span>Built to show the work clearly.</span><a href="#top">Back to top ↑</a></div></footer>
+
+  <script>
+    (() => {
+      const root = document.documentElement;
+      const themeButton = document.getElementById('theme-toggle');
+      const themeIcon = document.getElementById('theme-icon');
+      const menuButton = document.getElementById('menu-toggle');
+      const nav = document.getElementById('primary-nav');
+      const themeKey = 'am-portfolio-theme';
+      const sun = '<circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/>';
+      const moon = '<path d="M20.2 15.6A8.5 8.5 0 0 1 8.4 3.8 8.5 8.5 0 1 0 20.2 15.6Z"/>';
+      let saved = null;
+      try { saved = localStorage.getItem(themeKey); } catch (_) {}
+      if (saved === 'light' || saved === 'dark') root.dataset.theme = saved;
+      const syncThemeButton = () => {
+        const light = root.dataset.theme === 'light';
+        themeButton.setAttribute('aria-label', light ? 'Switch to dark theme' : 'Switch to light theme');
+        themeIcon.innerHTML = light ? moon : sun;
+      };
+      syncThemeButton();
+      themeButton.addEventListener('click', () => {
+        root.dataset.theme = root.dataset.theme === 'light' ? 'dark' : 'light';
+        try { localStorage.setItem(themeKey, root.dataset.theme); } catch (_) {}
+        syncThemeButton();
+      });
+      menuButton.addEventListener('click', () => {
+        const open = menuButton.getAttribute('aria-expanded') === 'true';
+        menuButton.setAttribute('aria-expanded', String(!open));
+        menuButton.setAttribute('aria-label', open ? 'Open navigation' : 'Close navigation');
+        nav.classList.toggle('open', !open);
+      });
+      nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+        nav.classList.remove('open');
+        menuButton.setAttribute('aria-expanded', 'false');
+        menuButton.setAttribute('aria-label', 'Open navigation');
+      }));
+      document.getElementById('year').textContent = new Date().getFullYear();
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const revealItems = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window && !reducedMotion) {
+        const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+          if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+        }), { threshold: .08, rootMargin: '0px 0px -32px 0px' });
+        revealItems.forEach(item => observer.observe(item));
+      } else revealItems.forEach(item => item.classList.add('visible'));
+      const sectionObserver = new IntersectionObserver(entries => entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const current = document.querySelector('.nav-links a[href="#' + entry.target.id + '"]');
+          document.querySelectorAll('.nav-links a').forEach(link => link.removeAttribute('aria-current'));
+          if (current) current.setAttribute('aria-current', 'location');
+        }
+      }), { rootMargin: '-35% 0px -55% 0px' });
+      document.querySelectorAll('main section[id]').forEach(section => sectionObserver.observe(section));
+    })();
+  </script>
+</body>
+</html>
